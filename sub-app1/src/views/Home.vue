@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld msg="vue 子应用"></HelloWorld>
+  <h1>vue3+ts子应用</h1>
+  <Button :interval="10000">按钮</Button>
 </template>
 
-<script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import HelloWorld from '@/components/HelloWorld.vue'
-@Options({
-  components: { HelloWorld }
-})
-export default class Home extends Vue { msg!: string}
+<script lang="ts" setup>
+import { defineAsyncComponent } from 'vue'
+// const Button = defineAsyncComponent(() => import('baseApp/Button.vue')
+//   .finally(() => {
+//     console.log(Button, 'button')
+//   }))
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
