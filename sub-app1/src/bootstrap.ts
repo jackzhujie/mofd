@@ -1,9 +1,10 @@
-import '../public-path'
-import { Button } from '@/remoteConfig/remoteRef'
-import { createApp, defineAsyncComponent } from 'vue'
+// import '../public-path'
+import { createApp, defineAsyncComponent, version } from 'vue'
 import App from './App.vue'
 import store from './store'
 import router from '@/router/index'
+import { Button } from '@/remoteConfig/remoteRef'
+console.log(Button, 'version')
 // 全局注册一个来自其他应用的组件
 const app = createApp(App)
 app.component('Button', Button)

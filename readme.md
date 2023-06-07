@@ -1,13 +1,28 @@
-### Micro front-end and module federation
+## Micro front-end and module federation(微前端+模块联邦)
 一个微前端和模块联邦结合的示例项目。旨在解决微前端项目拆分后，前端公共组件，函数，样式等无法复用的问题。
 
 #### 场景
 我们当前遇到，一个公司的前端应用，设计风格，交互规范，数据接口都是一致的。但是奈何微前端拆分后，导致项目直接隔离，复用组件，函数，样式就变得困难了。
-于是在微前端的基础上，增加了一个`webpack`的模块联邦功能。
+于是在微前端的基础上，增加了一个`webpack`的模块联邦(`module-federation`)功能,帮我们导出公共组件、样式、函数等模块给其他应用使用。
+
+#### 整体架构说明
+微前端框架: `@micro-zoe/micro-app`
+模块联邦：`webpack5 module-federation`
+项目结构：基座应用base``
 
 #### 具体说明
 本项目是基于一个基座应用(`vue3 + ts`)，2个子应用（`vue3+ts;react+ts`）的结合使用。
 基座应用会暴露公共方法和函数给子应用使用，子应用也会提供自己的组件和函数供其他应用使用。
 
+
+### 启动项目
+```bash
+# step1:安装lerna
+npm run install
+# step2:接下来安装所有应用的依赖
+lerna bootstrap
+# step3:启动项目,端口分别为8091,8092,8093
+lerna serve
+```
 
 > 微前端改造，模块联邦使用过程中，都是与很多问题的。

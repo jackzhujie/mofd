@@ -7,7 +7,6 @@
  */
 export const loadComponent = (scope: string, module: string) => {
   return async () => {
-    // console.log(__webpack_init_sharing__, '__webpack_init_sharing__')
     // Initializes the share scope. This fills it with known provided modules from this build and all remotes
     // @ts-ignore
     await __webpack_init_sharing__('default');
@@ -15,8 +14,10 @@ export const loadComponent = (scope: string, module: string) => {
     const container = window[scope]; // or get the container somewhere else
     // Initialize the container, it may provide shared modules
     // @ts-ignore
-    // await container.init(__webpack_share_scopes__.default);
-    console.log(container, 'container')
+    console.log(container, __webpack_share_scopes__, 'container')
+    // Initialize the container, it may provide shared modules
+    // @ts-ignore
+    await container.init(__webpack_share_scopes__.default);
     // @ts-ignore
     const factory = await container.get(module);
     return factory();
@@ -26,6 +27,10 @@ const urlCache = new Set();
 export const useDynamicScript = (url: string) => {
   return new Promise((resolve, reject) => {
     if (!url) reject(false);
+
+    if (urlCache.has(url)) {
+      resolve(true)
+    }
 
     const element = document.createElement('script');
     // 防止微前端框架处理了该请求

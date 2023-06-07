@@ -1,0 +1,8 @@
+{
+  "packages": [
+    "base",
+    "sub-app1",
+    "sub-app2"
+  ],
+  "version": "0.0.0"
+}
