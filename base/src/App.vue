@@ -13,7 +13,21 @@
 </template>
 
 <script lang="ts" setup>
+
+import { DecorationTest } from '@/assets/decoration'
+
 import { ref } from 'vue'
+
+console.log('run test')
+const decorationText = new DecorationTest('小明')
+decorationText.sayName('张三')
+decorationText.useDependency()
+decorationText.setName('小刚')
+const descriptor = Object.getOwnPropertyDescriptor(
+  Object.getPrototypeOf(decorationText),
+  'dependency'
+)
+console.log(decorationText, decorationText.dependency, 'decorationText.dependency')
 const runNum = ref(0)
 const testClickBtn = () => {
   runNum.value = runNum.value + 1
