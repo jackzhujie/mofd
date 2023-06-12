@@ -1,10 +1,12 @@
 <template>
-  <h1>vue3+ts子应用</h1>
+  <h1>vue3+ts子应用11212112</h1>
   <Button :interval="10000">按钮</Button>
 </template>
 
 <script lang="ts" setup>
+// import { Button } from '@/remoteConfig/remoteRef'
 import { defineAsyncComponent } from 'vue'
+// console.log(Button, 'version')
 // const Button = defineAsyncComponent(() => import('baseApp/Button.vue')
 //   .finally(() => {
 //     console.log(Button, 'button')

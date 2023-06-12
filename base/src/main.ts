@@ -1,1 +1,1 @@
-import './bootstrap.ts'
+import('./bootstrap')

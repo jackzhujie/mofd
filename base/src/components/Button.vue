@@ -1,7 +1,7 @@
 <template>
   <button class="base-btn" v-debounce-click="handleClick">
     <slot>
-      <span>按钮</span>
+      <span>按钮1</span>
     </slot>
   </button>
 </template>

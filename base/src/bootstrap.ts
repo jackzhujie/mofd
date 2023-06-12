@@ -5,7 +5,6 @@ import store from './store'
 import router from '@/router/index'
 import microApp from '@micro-zoe/micro-app'
 import Button from '@/components/Button.vue'
-console.log(version, 'version')
+console.log(version, 'version12')
 microApp.start()
-
 createApp(App).use(router).use(store).component('Button', Button).mount('#app')

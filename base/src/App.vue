@@ -1,9 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <h1>vue3+ts基座应用</h1>
+  <h1>vue3+ts基座应用122</h1>
   <div class="app">
     <router-link to="/">VUE基座应用</router-link>
-    <router-link to="/app1">VUE子应用1</router-link>
+    <router-link to="/app1">VUE子应用</router-link>
     <router-link to="/app2">React子应用2</router-link>
     <div class="container">
       <router-view></router-view>
