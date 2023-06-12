@@ -17,6 +17,12 @@ module.exports = defineConfig({
     }
   },
   publicPath: 'auto',
+  chainWebpack: config => {
+    config.plugin('define').tap((args) => {
+      args[0].isProduction = 1
+      return args
+    })
+  },
   configureWebpack: {
     externals: {
       vue: 'Vue'
