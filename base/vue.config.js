@@ -10,6 +10,7 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 8091,
+    // 防止刷新404
     historyApiFallback: true,
     headers: {
       // 允许跨域
@@ -19,7 +20,9 @@ module.exports = defineConfig({
   publicPath: 'auto',
   chainWebpack: config => {
     config.plugin('define').tap((args) => {
+      console.log(args, 'args')
       args[0].isProduction = 1
+      config.resolve.alias.vue$ = process.env.NODE_ENV === 'production' ? 'vue/dist/vue.global.prod.js' : 'vue/dist/vue.esm.js'
       return args
     })
   },
