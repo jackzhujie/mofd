@@ -1,22 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <h1>vue3+ts基座应用122</h1>
   <div class="app">
-    <router-link to="/">VUE基座应用</router-link>
-    <router-link to="/app1">VUE子应用</router-link>
-    <router-link to="/app2">React子应用2</router-link>
-    <div class="container">
-      <router-view></router-view>
+    <h2>micro-app微前端+ModuleFederation模块联邦演示</h2>
+    <div class="layout">
+      <ul class="menu">
+        <li>
+          <router-link to="/">VUE基座应用</router-link>
+        </li>
+        <li>
+          <router-link to="/app1">VUE子应用</router-link>
+        </li>
+        <li>
+          <router-link to="/app2">React子应用</router-link>
+        </li>
+      </ul>
+      <div class="container">
+        <router-view></router-view>
+      </div>
     </div>
-    <Button :handle-click="testClickBtn" :interval="1000">防抖按钮({{runNum}})</Button>
   </div>
 </template>
 
 <script lang="ts" setup>
 
 import { DecorationTest } from '@/assets/decoration'
-
-import { ref } from 'vue'
 
 console.log('run test')
 const decorationText = new DecorationTest('小明')
@@ -28,11 +34,7 @@ const descriptor = Object.getOwnPropertyDescriptor(
   'dependency'
 )
 console.log(decorationText, decorationText.dependency, 'decorationText.dependency')
-const runNum = ref(0)
-const testClickBtn = () => {
-  runNum.value = runNum.value + 1
-  return runNum.value
-}
+
 </script>
 
 <style lang="less">
@@ -42,31 +44,40 @@ const testClickBtn = () => {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
   .app {
-    padding-top: 20px;
+    box-sizing: border-box;
+    .layout {
+      display: flex;
+      .menu {
+        margin: 0;
+        width: 120px;
+        li {
+          list-style-type: none;
+        }
+      }
+    }
     .container {
       background-color: antiquewhite;
-      border-radius: 8px;
-      margin: 0 auto;
-      width: 400px;
-      height: 200px;
+      flex: 1;
       padding: 20px;
       box-sizing: border-box;
+      overflow: auto;
+      max-height: calc(100vh - 100px);
     }
     a {
       padding: 10px;
       width: 100px;
       text-align: center;
       height: 24px;
+      font-size: 14px;
+      color: #282c34;
+      line-height: 24px;
+      vertical-align: middle;
       display: inline-block;
       text-decoration: none; /* 去掉下划线 */
-      color: inherit; /* 继承父元素的文本颜色 */
       &.router-link-active {
         color: #42b983;
         background-color: antiquewhite;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
       }
     }
   }

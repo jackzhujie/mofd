@@ -1,6 +1,6 @@
 <template>
-  <h1>vue3+ts子应用11212112</h1>
-  <Button :interval="10000">按钮</Button>
+  <h1>vue3+ts子应用</h1>
+  <Button :interval="10000">远程组件，防抖按钮</Button>
 </template>
 
 <script lang="ts" setup>

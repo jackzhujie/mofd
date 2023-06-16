@@ -9,6 +9,7 @@ module.exports = defineConfig({
     }
   },
   devServer: {
+    open: true,
     port: 8091,
     // 防止刷新404
     historyApiFallback: true,
@@ -21,8 +22,7 @@ module.exports = defineConfig({
   chainWebpack: config => {
     config.plugin('define').tap((args) => {
       console.log(args, 'args')
-      args[0].isProduction = 1
-      config.resolve.alias.vue$ = process.env.NODE_ENV === 'production' ? 'vue/dist/vue.global.prod.js' : 'vue/dist/vue.esm.js'
+      args[0].isProduction = process.env.NODE_ENV === 'production'
       return args
     })
   },
