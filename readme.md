@@ -19,10 +19,13 @@
 ```bash
 # step1:安装lerna
 npm run install
-# step2:接下来安装所有应用的依赖
-lerna bootstrap
-# step3:启动项目,端口分别为8091,8092,8093
-lerna serve
+# step2:接下来安装所有应用的依赖，看你是npm还是yarn
+cd ./base && npm i && cd ../sub-app1 && npm i && cd ../sub-app2 && npm i
+# step2:或
+cd ./base && yarn && cd ../sub-app1 && yarn && cd ../sub-app2 && yarn
+
+# step3:确定依赖都安装成功后，启动项目,端口分别为8091,8092,8093
+npm run serve
 ```
 
 > 微前端改造，模块联邦使用过程中，都是与很多问题的。

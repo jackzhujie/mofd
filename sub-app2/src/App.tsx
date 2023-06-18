@@ -4,7 +4,7 @@ import './App.css';
 import remoteRef from "./remoteConfig/remoteRef";
 
 function App() {
-    const [isInViewport, setIsInViewport] = useState(false);
+    const [isInViewport, setIsInViewport] = useState(true);
     const elementRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     let util: any;
@@ -46,6 +46,7 @@ function App() {
         <div className="App">
             <div className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
+                <div>用baseApp工具函数来检测窗口</div>
                 <p>是否在可视窗口：{isInViewport ? '是' : '否'}</p>
                 <div
                     ref={containerRef}

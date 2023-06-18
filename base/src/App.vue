@@ -21,10 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-
 import { DecorationTest } from '@/assets/decoration'
-
-console.log('run test')
 const decorationText = new DecorationTest('小明')
 decorationText.sayName('张三')
 decorationText.useDependency()
@@ -33,7 +30,6 @@ const descriptor = Object.getOwnPropertyDescriptor(
   Object.getPrototypeOf(decorationText),
   'dependency'
 )
-console.log(decorationText, decorationText.dependency, 'decorationText.dependency')
 
 </script>
 
