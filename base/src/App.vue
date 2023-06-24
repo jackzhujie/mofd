@@ -24,13 +24,9 @@
 import { DecorationTest } from '@/assets/decoration'
 const decorationText = new DecorationTest('小明')
 decorationText.sayName('张三')
-decorationText.useDependency()
 decorationText.setName('小刚')
-const descriptor = Object.getOwnPropertyDescriptor(
-  Object.getPrototypeOf(decorationText),
-  'dependency'
-)
-
+decorationText.message = 'jack'
+console.log(decorationText.message)
 </script>
 
 <style lang="less">

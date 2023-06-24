@@ -16,19 +16,19 @@ function authorize (target: any, methodName: string, descriptor: PropertyDescrip
   }
 }
 
-class Dependency {
-  constructor () {
-    console.log('created')
-  }
+function uppercase (target: any, propertyName: string, descriptor: PropertyDescriptor): void {
+  const originalSetter = descriptor?.set
 
-  doSomething () {
-    console.log('Doing something...')
-  }
-}
+  if (originalSetter) {
+    descriptor.set = function (value: string): void {
+      if (typeof value === 'string') {
+        value = value.toUpperCase()
+      }
+      originalSetter.call(this, value)
+    }
 
-function InjectDependency (target: any, propertyName: string) {
-  console.log('inject', target, 'eeee')
-  target[propertyName] = new Dependency()
+    Object.defineProperty(target, propertyName, descriptor)
+  }
 }
 
 function validateParam (target: any, methodName: string, parameterIndex: number) {
@@ -49,20 +49,22 @@ function logClass<T extends new (...args: any[]) => any>(target: T): T {
   return target
 }
 
+@logClass
 export class DecorationTest {
-  // 装饰dependency属性，类创建时，将Dependency注入到当前属性中
-  @InjectDependency
-  dependency: Dependency | undefined;
-
   name: string;
   constructor (name: string) {
     this.name = name
-    console.log(this.dependency, 'constructor')
   }
 
-  useDependency () {
-    console.log(this.dependency, 't111')
-    this.dependency?.doSomething?.()
+  private _message = '';
+
+  get message (): string {
+    return this._message
+  }
+
+  @uppercase
+  set message (value: string) {
+    this._message = value
   }
 
   setName (@validateParam name: string) {
@@ -70,7 +72,7 @@ export class DecorationTest {
   }
 
   // 方法装饰器，调用方法时会触发
-  // @authorize
+  @authorize
   sayName (name: string) {
     // 只会打印装饰器运行的name
     console.log(name)
