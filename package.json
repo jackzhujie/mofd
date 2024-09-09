@@ -1,0 +1,19 @@
+{
+  "name": "dynamic-system-host",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "serve": "lerna run --scope=base --scope=sub-app1 --scope=sub-app2 --parallel serve",
+    "install": "lerna run --scope=base --scope=sub-app1 --scope=sub-app2 --parallel install",
+    "build": "lerna run --scope=base --scope=sub-app1 --scope=sub-app2 build",
+    "clean": "lerna run --scope=base --scope=sub-app1 --scope=sub-app2 --parallel clean"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.0.0",
+    "npm": ">=9.0.0 <11.0.0"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1",
+    "wait-on": "7.0.1"
+  }
+}
