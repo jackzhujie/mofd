@@ -8,7 +8,15 @@
 #### 整体架构说明
 微前端框架: `@micro-zoe/micro-app`
 模块联邦：`webpack5 module-federation`
-项目结构：基座应用base``
+项目结构：基座应用`base`使用vue3，子应用1：`sub-app1`使用vue3，子应用2：`sub-app2`使用react
+项目使用了`lerna`管理项目，方便管理依赖，和启动项目
+项目结构:
+
+```bash
+├── base
+├── sub-app1
+├── sub-app2
+```
 
 #### 具体说明
 本项目是基于一个基座应用(`vue3 + ts`)，2个子应用（`vue3+ts;react+ts`）的结合使用。
@@ -29,6 +37,6 @@ npm run serve
 ```
 
 > 微前端改造，模块联邦使用过程中，都是与很多问题的。如果遇到任何微前端，或者模块联邦，或者两者结合的问题，都可以在本项目提[issues](https://github.com/jackzhujie/mofd/issues)
-> 也环境关注我的个人公众号**程序员每日三问**，每天推送前端面试题，算法，干活。
+> 也环境关注我的个人公众号**程序员每日三问**，每天推送前端面试题，算法，干货。
 > 如果你有任何解决不了的问题都可以加我微信，我可以跟你讨论或者进群跟小伙伴们一起讨论解决。
 <img src="https://github.com/jackzhujie/mofd/blob/main/static/qcCode.jpg.jpg" alt="二维码" width="300">
